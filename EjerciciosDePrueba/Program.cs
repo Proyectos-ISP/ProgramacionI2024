@@ -123,6 +123,7 @@ internal class Program
 
         int day, month, year;
 
+        // read the respons
         Console.WriteLine("Enter the day of birth.");
         day = int.Parse(Console.ReadLine());
 
@@ -132,6 +133,10 @@ internal class Program
         Console.WriteLine("Enter the year of birth.");
         year = int.Parse(Console.ReadLine());
 
+        // compare result
+        // Day 0 - 31
+        // Month 12 - 1
+        // Year 0, 1900-1700,2000,20024 is a right years.
         if(day == 0 || day > 31)
         {
             Console.WriteLine("The day is incorrectly formatted");
