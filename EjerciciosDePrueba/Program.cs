@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 
@@ -122,6 +123,7 @@ internal class Program
         // def vars
 
         int day, month, year;
+        bool validate;
 
         // read the respons
         Console.WriteLine("Enter the day of birth.");
@@ -137,20 +139,74 @@ internal class Program
         // Day 0 - 31
         // Month 12 - 1
         // Year 0, 1900-1700,2000,20024 is a right years.
-        if(day == 0 || day > 31)
+        // 4-6-9-11
+
+        // Validate month
+
+        //if(month >= 1 && month <= 12)
+        //{
+        //    validate = true;
+
+        //}
+        //else
+        //{
+        //    validate = false;
+        //}
+
+        //// Validate year
+
+        //if(year >= 1)
+        //{
+        //    validate = true;
+        //}
+        //else
+        //{
+        //    validate = false;
+        //}
+
+        // Validate day
+
+        if ((day >= 1 && day <= 31) && year >= 1 && (month >= 1 && month <= 12))
         {
-            Console.WriteLine("The day is incorrectly formatted");
+            if (day == 4 || day == 6 || day == 9 || day == 11)
+            {
+                if (day <= 30)
+                {
+                    validate = true;
+                }
+                else
+                {
+                    validate = false;
+                }
+            }
+            else
+            {
+                if (month == 2)
+                {
+                    if (year % 4 == 0 && day <= 29)
+                    {
+                        validate = true;
+                    }
+                    else
+                    {
+                        validate = false;
+                    }
+                }
+                else
+                {
+                    validate = true;
+                }
+            }
+        }
+        else
+        {
+            validate = false;
         }
 
-        if(month > 12 || month == 0)
-        {
-            Console.WriteLine("The month is incorrectly formatted");
-        }
-
-        if(year == 0)
-        {
-            Console.WriteLine("The year is incorrectly formatted");
-        }
+        if (validate)
+            Console.WriteLine("Date is correctly");
+        else
+            Console.WriteLine("Date is incorrectly.");
     }
 }
 
