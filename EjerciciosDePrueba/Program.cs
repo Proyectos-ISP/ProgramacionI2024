@@ -141,34 +141,11 @@ internal class Program
         // Year 0, 1900-1700,2000,20024 is a right years.
         // 4-6-9-11
 
-        // Validate month
-
-        //if(month >= 1 && month <= 12)
-        //{
-        //    validate = true;
-
-        //}
-        //else
-        //{
-        //    validate = false;
-        //}
-
-        //// Validate year
-
-        //if(year >= 1)
-        //{
-        //    validate = true;
-        //}
-        //else
-        //{
-        //    validate = false;
-        //}
-
         // Validate day
 
         if ((day >= 1 && day <= 31) && year >= 1 && (month >= 1 && month <= 12))
         {
-            if (day == 4 || day == 6 || day == 9 || day == 11)
+            if (month == 4 || month == 6 || month == 9 || month == 11)
             {
                 if (day <= 30)
                 {
@@ -189,7 +166,10 @@ internal class Program
                     }
                     else
                     {
-                        validate = false;
+                        if(day <= 28)
+                            validate = true;
+                        else 
+                            validate = false;
                     }
                 }
                 else
